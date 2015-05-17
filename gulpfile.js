@@ -9,8 +9,8 @@ var babel = require('gulp-babel');
 var sass = require('gulp-sass');
 
 var paths = {
-  'javascripts': 'assets/javascripts/**/*.es6',
-  'stylesheets': 'assets/stylesheets/**/*.scss',
+  'javascripts': 'assets/javascripts/app/**/*.es6',
+  'stylesheets': 'assets/stylesheets/app/**/*.scss',
 }
 
 gulp.task('default', ['build', 'watch']);
@@ -25,22 +25,22 @@ gulp.task('build:javascripts', ['clean:javascripts'], function(){
       .pipe(uglify())
       .pipe(concat('application.js'))
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest('public/javascripts'));
+    .pipe(gulp.dest('public/javascripts/app'));
 });
 
 gulp.task('build:stylesheets', ['clean:stylesheets'], function () {
   return gulp.src(paths.stylesheets)
     .pipe(sass().on('error', sass.logError))
     .pipe(concat('application.css'))
-  .pipe(gulp.dest('public/stylesheets'));
+  .pipe(gulp.dest('public/stylesheets/app'));
 });
 
 gulp.task('clean:javascripts', function(cb){
-  del(['public/javascripts/**/*.js'], cb);
+  del(['public/javascripts/app/**/*.js'], cb);
 });
 
 gulp.task('clean:stylesheets', function(cb){
-  del(['public/stylesheets/**/*.css'], cb);
+  del(['public/stylesheets/app/**/*.css'], cb);
 });
 
 gulp.task('watch:javascripts', function(){
