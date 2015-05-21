@@ -21,9 +21,9 @@ gulp.task('watch', ['watch:javascripts', 'watch:stylesheets']);
 gulp.task('build:javascripts', ['clean:javascripts'], function(){
   return gulp.src(paths.javascripts)
     .pipe(sourcemaps.init())
+      .pipe(concat('application.js'))
       .pipe(babel())
       .pipe(uglify())
-      .pipe(concat('application.js'))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest('public/javascripts/app'));
 });
