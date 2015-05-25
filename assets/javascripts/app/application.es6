@@ -1,6 +1,10 @@
 (function(){
   class Application {
     constructor() {
+      if (window.Engine.Config.is_dev()) {
+        this.fps_meter = new FPSMeter();
+      };
+
       this.renderer = PIXI.autoDetectRenderer(
         window.Engine.Window.width,
         window.Engine.Window.height,
@@ -19,6 +23,10 @@
     }
 
     animate() {
+      if (window.Engine.Config.is_dev()) {
+        this.fps_meter.tick();
+      };
+
       this.renderer.render(this.main_stage);
       window.requestAnimationFrame(() => {
         this.animate();
