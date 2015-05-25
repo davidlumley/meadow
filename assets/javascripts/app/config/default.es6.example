@@ -1,0 +1,27 @@
+(function(){
+
+  class Config {
+    constructor() {
+      this.environment = 'dev';
+    }
+
+    is_test() {
+      return this.enviroment == 'test';
+    }
+
+    is_dev() {
+      return this.enviroment == 'dev';
+    }
+
+    is_prod() {
+      return this.enviroment == 'prod';
+    }
+  }
+
+  if(window.Engine === undefined) {
+    window.Engine = {};
+  }
+
+  window.Engine.Config = new Config();
+
+}());
